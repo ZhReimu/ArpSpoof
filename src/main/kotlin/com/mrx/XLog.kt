@@ -26,6 +26,6 @@ object XLog {
 //    fun getLogger(name: String): Logger = LogManager.getLogger(name)
 //
 //    fun getLogger(clazz: Class<*>): Logger = LogManager.getLogger(clazz.name)
-    fun getLogger(clazz:Class<*>): Logger = getLogger(clazz.name)
-    fun getLogger(clazz:String): Logger = LoggerFactory.getLogger(clazz)
+    fun getLogger(clazz: Class<*>): Logger = getLogger(clazz.name)
+    fun getLogger(clazz: String): Logger = LoggerFactory.getLogger(clazz)
 }

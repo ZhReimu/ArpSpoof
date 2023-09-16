@@ -57,11 +57,11 @@ class ArpSpoof(nif: PcapNetworkInterface) : AutoCloseable {
     /**
      * ARP 攻击
      * @param target Target
-     * @param spoof_ip Target
+     * @param spoofIp Target
      */
-    fun spoof(target: Target, spoof_ip: Target) {
+    fun spoof(target: Target, spoofIp: Target) {
         val ethPacket = ARP(
-            spoof_ip,
+            spoofIp,
             target,
             reqHandle,
             respHandle,
@@ -176,7 +176,7 @@ class ArpSpoof(nif: PcapNetworkInterface) : AutoCloseable {
                         // 那就将 MAC 缓存下来
                         dstTarget.mac = arpPacket.header.srcHardwareAddr
                         flag = true
-                        logger.debug("解析到的 Mac 地址为 ${dstTarget.mac}")
+                        logger.debug("解析到的 Mac 地址为 {}", dstTarget.mac)
                     }
                 }
             })
