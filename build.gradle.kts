@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") version "1.9.0"
     application
 }
 
@@ -14,15 +14,13 @@ repositories {
 }
 
 dependencies {
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.17.0")
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    implementation("org.apache.logging.log4j:log4j-core:2.17.0")
     // https://mvnrepository.com/artifact/org.pcap4j/pcap4j-core
     implementation("org.pcap4j:pcap4j-core:1.8.2")
     // https://mvnrepository.com/artifact/org.pcap4j/pcap4j-packetfactory-static
     implementation("org.pcap4j:pcap4j-packetfactory-static:1.8.2")
-
+    implementation("org.slf4j:slf4j-api:2.0.9")
+    implementation("ch.qos.logback:logback-classic:1.4.11")
+    implementation("ch.qos.logback:logback-core:1.4.11")
 
     testImplementation(kotlin("test"))
 }
@@ -32,7 +30,7 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "11"
 }
 
 application {
