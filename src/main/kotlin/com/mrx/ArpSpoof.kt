@@ -68,7 +68,9 @@ class ArpSpoof(nif: PcapNetworkInterface) : AutoCloseable {
             myIPAddress,
             myMacAddress
         ).getWarpedEthPacketBuilder()
-        sendHandle.sendPacket(ethPacket.build())
+        val packet = ethPacket.build()
+        logger.debug("prepare to sending packet, src: {}, dst: {}", packet.header.srcAddr, packet.header.dstAddr)
+        sendHandle.sendPacket(packet)
     }
 
     /**
@@ -164,8 +166,7 @@ class ArpSpoof(nif: PcapNetworkInterface) : AutoCloseable {
                 logger.info("停止发送 ARP 请求")
             }.start()
 
-            logger.debug(filter)
-            logger.debug("开始监听 ARP 数据包")
+            logger.debug("开始监听 ARP 数据包, filter: {}", filter)
             respHandle.setFilter(filter, BpfProgram.BpfCompileMode.OPTIMIZE)
             // 阻塞, 监听 ARP 响应包
             respHandle.loop(1, PacketListener { packet ->

