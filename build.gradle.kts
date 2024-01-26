@@ -8,11 +8,6 @@ plugins {
 group = "me.administrator"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    maven("https://maven.aliyun.com/repository/central")
-    mavenCentral()
-}
-
 dependencies {
     // https://mvnrepository.com/artifact/org.pcap4j/pcap4j-core
     implementation("org.pcap4j:pcap4j-core:1.8.2")

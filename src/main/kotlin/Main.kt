@@ -11,7 +11,7 @@ object Main {
     fun main(args: Array<String>) {
         val nif = NifSelector().selectNetworkInterface()
         val arpSpoof = ArpSpoof(nif)
-        val targetIP = "192.168.18.216"
+        val targetIP = "192.168.18.229"
         val gatewayIP = "192.168.18.1"
         val target = ArpSpoof.Target(targetIP.toInetAddress())
         val gateway = ArpSpoof.Target(gatewayIP.toInetAddress())
